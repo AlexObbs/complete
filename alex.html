@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenya Safari Packages</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e67e22;
+            --primary-light: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+            --success: #27ae60;
+            --danger: #c0392b;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Packages Hero */
+        .packages-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 80px;
+        }
+
+        .packages-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .packages-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Package Cards */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .package-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .package-image {
+            height: 400px;
+            background: url('home.jpg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        .package-content {
+            padding: 40px;
+            position: relative;
+        }
+
+        .package-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .package-description {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Itinerary Section */
+        .itinerary-section {
+            margin-top: 40px;
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .itinerary-toggle {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .itinerary-toggle:hover {
+            background-color: var(--primary-light);
+        }
+
+        .itinerary-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .itinerary-content.active {
+            max-height: 5000px;
+        }
+
+        .day-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .day-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .day-highlights {
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Pros and Cons */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pros, .cons {
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .pros h3, .cons h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pros h3 {
+            color: var(--success);
+        }
+
+        .cons h3 {
+            color: var(--danger);
+        }
+
+        .pros ul, .cons ul {
+            padding-left: 25px;
+        }
+
+        .pros li, .cons li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* Disclaimer Section */
+        .disclaimer-section {
+            margin-top: 40px;
+            background-color: #fff9f1;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #fce5cd;
+        }
+
+        .disclaimer-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #d35400;
+        }
+
+        .disclaimer-content {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .disclaimer-toggle {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .disclaimer-toggle:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .disclaimer-full {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .disclaimer-full.active {
+            max-height: 2000px;
+        }
+
+        .disclaimer-excerpt {
+            margin-bottom: 15px;
+        }
+
+        /* Book Button */
+        .book-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+            cursor: pointer;
+        }
+
+        .book-button:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.4);
+        }
+
+        .book-button i {
+            margin-left: 8px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        /* Animation Delays */
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            .package-content {
+                padding: 30px 20px;
+            }
+
+            .package-title {
+                font-size: 1.8rem;
+            }
+
+            .packages-hero h1 {
+                font-size: 2.5rem;
+            }
+            .day-highlights{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your header goes here -->
+
+    <!-- Packages Hero Section -->
+   
+
+    <!-- Packages Grid -->
+    <section class="container packages-grid">
+        <!-- Saver Package -->
+        <div class="package-card fade-in">
+            <div class="package-image">
+                <div class="package-badge"></div>
+            </div>
+            
+            <div class="package-content">
+                <h2 class="package-title fade-in delay-1">SAVER PACKAGE</h2>
+                <p class="package-description fade-in delay-2">Authentic Kenyan experiences made affordable – travel smart, explore more!</p>
+                
+                <!-- Itinerary Section -->
+                <div class="itinerary-section fade-in delay-3">
+                    <button class="itinerary-toggle" onclick="toggleItinerary(this)">
+                        <i class="fas fa-calendar-alt"></i> View 7-Day Itinerary
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="itinerary-content">
+                        <!-- Day 1 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 1: Arrival in Nairobi</h3>
+                            <ul>
+                                <li><strong>Arrival:</strong> Guests arrive at Jomo Kenyatta International Airport and are welcomed by their assigned guide.</li>
+                                <li><strong>Check-in:</strong> Transfer via local transport (Uber or Matatu) to an affordable, comfortable BnB in Nairobi or an audited homestay.</li>
+                                <li><strong>Activity:</strong> Relax and acclimate. Optional evening walk to a nearby market for local crafts and souvenirs.</li>
+                                <li><strong>Dinner:</strong> Authentic Kenyan meal at a local eatery or with the host family.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> First taste of Kenya's warmth and hospitality.</p>
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 2: Nairobi Exploration</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Visit the David Sheldrick Wildlife Trust to see baby elephants being cared for.</li>
+                                <li><strong>Midday:</strong> Lunch at a budget-friendly café serving Kenyan delicacies.</li>
+                                <li><strong>Afternoon:</strong> Head to the Giraffe Centre to interact with endangered Rothschild giraffes.</li>
+                                <li><strong>Evening:</strong> Experience a bustling local market, such as Maasai Market (days vary), for a true taste of Kenyan culture.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Interaction with wildlife and local artisans.</p>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 3: Journey to Ololokwe in Laikipia</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Travel via public bus or private matatu to Laikipia.</li>
+                                <li><strong>Afternoon:</strong> Arrival and check-in at a simple yet scenic BnB or audited homestay near Ololokwe.</li>
+                                <li><strong>Activity:</strong> Guided hike up Ololokwe, a sacred mountain offering breathtaking views.</li>
+                                <li><strong>Evening:</strong> Relax with locals over a casual dinner.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Stunning landscapes and cultural immersion.</p>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 4: Cultural Day</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Spend time with a local community to learn traditional skills like beadwork or farming techniques.</li>
+                                <li><strong>Afternoon:</strong> Participate in a barbecue night with locals, featuring Nyama Choma (grilled meat), chapati, and other Kenyan favorites.</li>
+                                <li><strong>Evening:</strong> Storytelling session by the fire.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Deep cultural connections and unforgettable culinary experiences.</p>
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 5: The Great Maasai Mara</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Travel via local transport to Maasai Mara. Check in to a budget-friendly tented camp.</li>
+                                <li><strong>Afternoon:</strong> Guided game drive to witness the Big Five and other wildlife.</li>
+                                <li><strong>Evening:</strong> Enjoy a simple meal while soaking in the Mara's tranquility.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> World-class wildlife adventure on a budget.</p>
+                        </div>
+                        
+                        <!-- Day 6 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 6: Maasai Mara & Return to Nairobi</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Sunrise game drive followed by breakfast.</li>
+                                <li><strong>Late Morning:</strong> Visit a Maasai village to learn about their traditions and buy handmade souvenirs.</li>
+                                <li><strong>Afternoon:</strong> Return to Nairobi using local transport.</li>
+                                <li><strong>Evening:</strong> Rest or optional night tour of Nairobi city.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Combining wildlife with Maasai culture.</p>
+                        </div>
+                        
+                        <!-- Day 7 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 7: Farewell and Free Time</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Free time for last-minute shopping or a visit to Karura Forest for a nature walk.</li>
+                                <li><strong>Afternoon:</strong> Pack and prepare for departure.</li>
+                                <li><strong>Evening:</strong> Airport transfer for their journey home.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Relaxed conclusion with optional activities.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pros and Cons -->
+                <div class="pros-cons fade-in delay-4">
+                    <div class="pros">
+                        <h3><i class="fas fa-thumbs-up" style="color: var(--success);"></i> Pros</h3>
+                        <ul>
+                            <li>Affordable for budget-conscious travelers</li>
+                            <li>Opportunity to experience Kenya like a local</li>
+                            <li>Includes a local SIM card for connectivity</li>
+                            <li>Travel medical insurance and visa included</li>
+                            <li>Knowledgeable guide for safety and navigation</li>
+                            <li>Authentic cultural immersion and local experiences</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cons">
+                        <h3><i class="fas fa-thumbs-down" style="color: var(--danger);"></i> Cons</h3>
+                        <ul>
+                            <li>Basic accommodations with limited amenities</li>
+                            <li>Public transport may not suit everyone's comfort level</li>
+                            <li>Interactions with locals and street children may feel overwhelming for some</li>
+                            <li>Meals are basic and may lack variety</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Disclaimer Section -->
+                <div class="disclaimer-section fade-in delay-5">
+                    <h3 class="disclaimer-title"><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
+                    <div class="disclaimer-excerpt">
+                        <p>The Saver Package is designed for adventurous travelers who wish to experience Kenya authentically and immerse themselves in the local culture. While every effort is made to ensure the safety and comfort of our clients, it is important to acknowledge certain conditions...</p>
+                    </div>
+                    
+                    <button class="disclaimer-toggle" onclick="toggleDisclaimer(this)">
+                        Read Full Disclaimer <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="disclaimer-full">
+                        <p class="disclaimer-content">
+                            <strong>Public Transport and Local Interaction:</strong><br>
+                            This package involves the use of public transport systems, including matatus, tuktuks, and motorbikes (pikipiki). While these modes of transport are commonly used by locals, they may not meet the same safety standards as private or international transport systems. Travelers may also encounter locals, including street children, who may approach them for money or food. We advise against giving out money to individuals and encourage donating to reputable local charities instead.
+                            <br><br>
+                            <strong>Safety Measures:</strong><br>
+                            Travelers will be accompanied by a vetted local guide throughout their trip. The guide is trained to navigate interactions with locals and ensure the traveler's safety. However, all clients must remain vigilant and follow the guide's instructions at all times.
+                            <br><br>
+                            <strong>Accommodation:</strong><br>
+                            Accommodations include audited homestays and budget BnBs. While these are selected for their quality and affordability, they may lack some amenities found in higher-end hotels.
+                            <br><br>
+                            <strong>Personal Responsibility:</strong><br>
+                            By booking this package, travelers agree to exercise caution during their trip and understand that the experience is focused on cultural immersion and exploration, which may include exposure to unfamiliar environments.
+                            <br><br>
+                            <strong>Waiver of Liability:</strong><br>
+                            The travel agency shall not be held liable for any incidents or discomforts arising from public transport usage, local interactions, or unforeseen circumstances beyond our control. Travelers are encouraged to purchase comprehensive travel insurance covering medical emergencies, theft, and cancellations.
+                            <br><br>
+                            By proceeding with the Saver Package, you confirm that you have read and understood the above terms and agree to participate in the itinerary at your own risk.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Book Button -->
+                <a href="#" class="book-button">
+                    Buy Now - £850
+
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Additional Package Placeholders (you can duplicate and modify the structure for other packages) -->
+        <div class="package-card fade-in">
+            <div class="package-image" style="background-image: url('images/accomodation23.jpg');">
+                <!-- No badge for this package -->
+            </div>
+            
+            <div class="package-content">
+                <h2 class="package-title fade-in delay-1">STANDARD PACKAGE</h2>
+                <p class="package-description fade-in delay-2">Experience Kenya with a balance of comfort and adventure – perfect for those seeking genuine experiences with modern amenities.</p>
+                
+                <!-- Itinerary Section (content would be similar structure to saver package) -->
+                <div class="itinerary-section fade-in delay-3">
+                    <button class="itinerary-toggle" onclick="toggleItinerary(this)">
+                        <i class="fas fa-calendar-alt"></i> View 7-Day Itinerary
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="itinerary-content">
+                        <!-- Day 1 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 1: Welcome to Nairobi</h3>
+                            <ul>
+                                <li><strong>Arrival:</strong>  Land at Jomo Kenyatta International Airport and meet your personal guide.</li>
+                                <li><strong>Check-in:</strong> Transfer to a comfortable hotel or BnB in Nairobi with breakfast included.</li>
+                                <li><strong>Evening:</strong> Relax and enjoy a local welcome dinner with scenic views at a rooftop or garden restaurant.</li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> stress-free arrival with a warm Kenyan welcome.</p>
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 2:  Nairobi Wildlife & Culture</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Visit the David Sheldrick Wildlife Trust to see rescued baby elephants.</li>
+                                <li><strong>Afternoon:</strong>Head to the Giraffe Centre for up-close interaction with endangered Rothschild giraffes.</li>
+                                <li><strong>Evening:</strong> Stroll through the Maasai Market to shop for authentic souvenirs and crafts.</li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>  A blend of wildlife encounters and cultural exploration.</p>
+                        </div>
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 3:   Journey to Lake Naivasha</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Private transport to Lake Naivasha. Check-in at a standard lakeside hotel.</li>
+                                <li><strong>Afternoon:</strong>Enjoy an optional boat ride to see hippos and aquatic birds up close.</li>
+                                <li><strong>Evening:</strong> Dinner with a serene lakeside view.</li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>  Nature and relaxation at one of Kenya’s most beautiful lakes.</p>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 4: Safari in Maasai Mara</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Travel to the Maasai Mara in a comfortable private vehicle. Check-in at a budget-friendly lodge with modern amenities.</li>
+                                <li><strong>Afternoon:</strong>  Embark on a thrilling guided game drive to spot the Big Five.</li>
+                                
+                                <li><strong>Evening:</strong> Optional night safari or relax under the stars.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Iconic wildlife adventure in Kenya’s premier game reserve.</p>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 5:  Cultural Immersion & Extended Safari</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Visit a Maasai village to learn about their traditions, dance, and beadwork.</li>
+                                <li><strong>Afternoon:</strong> Enjoy an extended safari, exploring deeper into the Mara.</li>
+                                <li><strong>Evening:</strong> Savor a delicious Nyama Choma barbecue dinner while watching a cultural dance performance.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>  A day filled with wildlife and rich cultural connections.</p>
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 6: Return to Nairobi & Evening Activities</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Return to Nairobi, with a stop for a relaxing lunch en route.</li>
+                                <li><strong>Afternoon:</strong> Free time for shopping or optional activities like a nature walk in Karura Forest.</li>
+                                <li><strong>Evening:</strong> Enjoy a farewell dinner with a live cultural music performance.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> A memorable final night celebrating your journey.</p>
+                        </div>
+                        
+                        <!-- Day 6 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 7: Departure</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Optional yoga or meditation session in a tranquil setting to conclude your trip.</li>
+                                <li><strong>Afternoon:</strong> Pack and prepare for your airport transfer.</li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>Relaxed farewell, leaving you refreshed and inspired.</p>
+                        </div>
+                        
+                        <!-- Day 7 -->
+                        
+                    </div>
+                </div>
+                
+                <!-- Pros and Cons -->
+                <div class="pros-cons fade-in delay-4">
+                    <div class="pros">
+                        <h3><i class="fas fa-thumbs-up" style="color: var(--success);"></i> Why Choose the Standard Package?
+                        </h3>
+                        <ul>
+                            <li>Organized Transport: Private vehicles ensure a safe and smooth journey.</li>
+                            <li>Comfortable Accommodation: Standard hotels and BnBs with breakfast provided.
+                            </li>
+                            <li>Personal Guide: Local experts make every experience richer and hassle-free.
+                            </li>
+                            <li>Flexible Add-Ons: Enhance your trip with optional activities tailored to your interests.
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
+                   
+                </div>
+                
+                <!-- No disclaimer section for this package -->
+                
+                <!-- Book Button -->
+                <a href="#" class="book-button">
+                    Buy Now - £1,000
+
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="package-card fade-in">
+            <div class="package-image" style="background-image: url('images/accomodation18.jpg');">
+                <!-- No badge for this package -->
+            </div>
+            
+            <div class="package-content">
+                <h2 class="package-title fade-in delay-1">PREMIUM PACKAGE
+                </h2>
+                <p class="package-description fade-in delay-2">Embark on a luxurious 7-day journey through Kenya, exploring iconic landscapes, vibrant wildlife, and rich cultural heritage. Perfect for families, couples, and adventurers seeking an exclusive safari experience, this premium package blends opulent accommodations, curated activities, and unforgettable encounters with Kenya’s beauty. Highlights include the Maasai Mara, Lake Nakuru, and personalized cultural interactions.
+                </p>
+                
+                <!-- Itinerary Section (content would be similar structure to saver package) -->
+                <div class="itinerary-section fade-in delay-3">
+                    <button class="itinerary-toggle" onclick="toggleItinerary(this)">
+                        <i class="fas fa-calendar-alt"></i> View 7-Day Itinerary
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="itinerary-content">
+                        <!-- Day 1 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 1: Arrival in Nairobi</h3>
+                            <ul>
+                                <li><strong>Welcome Experience:</strong>  Upon arrival, enjoy a personalized meet-and-greet service. Guests receive a welcome kit with Kenyan</li>
+                                <li><strong>Activity:</strong> Depending on arrival time, visit the Karen Blixen Museum or the Giraffe Centre.</li>
+                                
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Accomodation:</strong>  Luxury boutique hotel in Nairobi with a fine dining dinner.</p>
+                            
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 2:  Nairobi to Maasai Mara</h3>
+                            <ul>
+                                <li><strong>Morning:</strong>  Depart for the Maasai Mara in a private 4x4 vehicle, stopping for scenic views of the Great Rift Valley.</li>
+                                <li><strong>Afternoon:</strong>Arrive at your luxury tented camp in time for lunch.</li>
+                                <li><strong>Evening:</strong>  Embark on a guided sunset game drive, spotting the Big Five in Kenya’s premier wildlife reserve.</li>
+                                <li><strong>Value Addition:</strong>  Extended safari hours at no extra charge.</li>
+                               
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Accomodation:</strong>  Luxurious Maasai Mara camp with private terraces overlooking the savannah.</p>
+                            
+                        </div>
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 3:   Full-Day Maasai Mara Safari</h3>
+                            <ul>
+                                <li><strong>Morning & Afternoon: </strong> Full-day game drives to witness wildlife, including cheetahs, lions, and elephants. Visit the Mara River for a chance to see crocodiles and hippos.
+                                </li>
+                                <li><strong>Value Addition: </strong>Enjoy a cultural tour of a Maasai village with traditional dances and the opportunity to participate in beadwork crafting.</li>
+                                <li><strong>Optional: </strong> Upgrade to a hot air balloon safari for breathtaking aerial views of the Mara.</li>
+                                <li><strong>Accomodation: </strong> </li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Accomodation:</strong>  Luxurious Maasai Mara camp</p>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 4:  Maasai Mara to Lake Nakuru</h3>
+                            <ul>
+                                <li><strong>Morning:</strong>Drive to Lake Nakuru National Park, renowned for its flamingos and rhinos.</li>
+                                <li><strong>Afternoon:</strong>  Check into your luxury lodge and enjoy a gourmet lunch before heading out for a game drive. Spot endangered species such as the Rothschild giraffe and white rhinos.</li>
+                                
+                                <li><strong>Evening:</strong> Relax with a complimentary spa treatment.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Accomodation:</strong>Eco-lodge near Lake Nakuru with stunning lake views.
+                            </p>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 5:  Lake Nakuru to Amboseli National Park</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Travel to Amboseli National Park, famed for its elephant herds and iconic views of Mount Kilimanjaro.</li>
+                                <li><strong>Afternoon:</strong>After checking in, enjoy a leisurely afternoon game drive.</li>
+                                <li><strong>Value Addition:</strong>  Exclusive photo session with a professional photographer.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Accomodation:</strong> High-end lodge with panoramic views of Kilimanjaro.</p>
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 6: Full-Day Amboseli Safari</h3>
+                            <ul>
+                                <li><strong>Morning & Afternoon:</strong> Explore Amboseli’s unique ecosystems, capturing elephants, flamingos, and zebras set against the backdrop of Africa’s tallest mountain.</li>
+                                <li><strong>Optional:</strong>  Add a guided bushwalk or night safari for a rare wildlife experience.</li>
+                                <li><strong>Evening:</strong> Savor a cultural dinner with live traditional music.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Accomodation:</strong> Luxurious lodge in Amboseli.</p>
+                        </div>
+                        
+                        <!-- Day 6 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 7: Departure</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Return to Nairobi for a farewell lunch at a top-rated restaurant.</li>
+                                <li><strong>Optional:</strong> Visit the David Sheldrick Elephant Orphanage before airport transfer.</li>
+                                <li><strong>Farewell:</strong> Guests are gifted a curated photo album with highlights of their journey.</li>
+                                
+                            </ul>
+                           
+                        </div>
+                        
+                        <!-- Day 7 -->
+                        
+                    </div>
+                </div>
+                
+                <!-- Pros and Cons -->
+                <div class="pros-cons fade-in delay-4">
+                    <div class="pros">
+                        <h3><i class="fas fa-thumbs-up" style="color: var(--success);"></i> Why Choose the Premium Package?
+                        </h3>
+                        <ul>
+                            <li>Luxury accommodations with full-board meals.
+                            </li>
+                            <li>Private transportation and guided tours.
+
+                            </li>
+                            <li>Park entry fees, game drives, and cultural activities.
+
+                            </li>
+                            <li>Welcome kit, complimentary spa treatment, and extended safari hours.
+
+
+                            </li>
+                            <li style="font-weight: bold;">Suprise itinerary to a location not in the itinerary FREE!
+
+
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-close" style="color: var(--danger);"></i> Exclusions</h3>
+                        <ul>
+                            <li>International flights, visa fees, and personal expenses.
+                            </li>
+                            <li>Optional upgrades like hot air balloon rides or night safaris.
+
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
+                   
+                </div>
+                
+                <!-- No disclaimer section for this package -->
+                
+                <!-- Book Button -->
+                <a href="#" class="book-button">
+                    Buy Now - £1,800
+
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="package-card fade-in">
+            <div class="package-image" style="background-image: url('images/accomodation14.jpg');">
+                <!-- No badge for this package -->
+            </div>
+            
+            <div class="package-content">
+                <h2 class="package-title fade-in delay-1">
+                    LUXURY PACKAGE</h2>
+                <p class="package-description fade-in delay-2">Experience Kenya with a balance of comfort and adventure – perfect for those seeking genuine experiences with modern amenities.</p>
+                
+                <!-- Itinerary Section (content would be similar structure to saver package) -->
+                <div class="itinerary-section fade-in delay-3">
+                    <button class="itinerary-toggle" onclick="toggleItinerary(this)">
+                        <i class="fas fa-calendar-alt"></i> View 7-Day Itinerary
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="itinerary-content">
+                        <!-- Day 1 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 1: Arrival in Nairobi</h3>
+                            <ul>
+                                <li><strong>VIP Welcome:</strong> Guests are greeted at Jomo Kenyatta International Airport with champagne, a welcome kit (including premium Kenyan tea and handmade souvenirs), and a dedicated concierge.</li>
+                                <li><strong>Activity:</strong> Private transfer to a 5-star city hotel. Enjoy an optional spa session or visit the Karen Blixen Museum for a personalized after-hours tour.</li>
+                                <li><strong>Accomodation:</strong> Palatial suite at Giraffe Manor or Hemingways Nairobi.</li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Dinner at a fine-dining restaurant with panoramic views of Nairobi National Park.</p>
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 2:  Nairobi to Maasai Mara (Chartered Flight)</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Take a private chartered flight to the Maasai Mara, landing at an exclusive airstrip near your luxury lodge.</li>
+                                <li><strong>Afternoon:</strong>Begin your safari with a private game drive in a fully outfitted 4x4 Land Cruiser. Sip on curated cocktails while spotting wildlife.</li>
+                                <li><strong>Value Addition:</strong> Private sundowner setup in the savannah with a Maasai guide to narrate local legends.</li>
+                                <li><strong>Accomodation:</strong> High-end safari lodge or tented camp, such as Angama Mara or Mahali Mzuri, offering panoramic Mara views.
+                                 </li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>  Tailored evening meal under the stars with a personal chef.</p>
+                        </div>
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 3:   Full-Day Maasai Mara Safari</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Start the day with an unforgettable hot air balloon safari over the Mara, followed by a champagne breakfast in the bush.</li>
+                                <li><strong>Afternoon:</strong>Exclusive guided safari with a professional wildlife photographer for personalized tips and photo opportunities.</li>
+                                <li><strong>Evening:</strong> Private cultural interaction with Maasai elders and a traditional dance performance at the lodge.</li>
+                                <li><strong>Accomodation:</strong>  Same luxurious camp/lodge as Day 2.</li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>  Gourmet dining paired with rare Kenyan wines.
+                            </p>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 4:  Maasai Mara to Amboseli (Flight)</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Fly directly to Amboseli National Park on a private charter. Enjoy an aerial view of Mount Kilimanjaro during the journey.</li>
+                                <li><strong>Afternoon:</strong>   Arrive at your lodge, where you’ll be treated to a refreshing welcome drink and a light gourmet lunch.</li>
+                                
+                                <li><strong>Evening:</strong> Stay at a luxury eco-lodge such as Tawi Lodge or Amboseli Serena Safari Lodge, offering unparalleled views of Kilimanjaro.</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Private bush dinner with a live pianist.</p>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 5:  Full-Day Amboseli Exploration</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Guided walking safari led by expert naturalists, offering a closer connection to Amboseli’s flora and fauna.</li>
+                                <li><strong>Afternoon:</strong>  Relax at the lodge with a private poolside massage or yoga session.</li>
+                                <li><strong>Value Addition:</strong> Exclusive behind-the-scenes tour with conservationists working to protect Amboseli’s elephants.
+                                
+                                    </li>
+                                    <li><strong>Accomodation:</strong>  Same as day 4</li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>  Sundowner cocktails in a scenic location with a view of Kilimanjaro.</p>
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 6: Amboseli to Nairobi & Lake Naivasha</h3>
+                            <ul>
+                                <li><strong>Morning:</strong>Fly back to Nairobi for a gourmet brunch, then travel via private luxury vehicle to Lake Naivasha. Stop en route for curated wine tasting at a premium Kenyan vineyard.</li>
+                                <li><strong>Afternoon:</strong> Arrive at a private lakeside retreat for an afternoon of relaxation.</li>
+                                <li><strong>Evening:</strong> Enjoy a sunset boat ride to see hippos and exotic birdlife.
+                                </li>
+                                <li><strong>Accomodation:</strong> Stay at a high-end lodge, such as Loldia House, overlooking Lake Naivasha.
+                                </li>
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong> Dinner featuring locally sourced ingredients paired with a fireside ambiance.
+                            </p>
+                        </div>
+                        
+                        <!-- Day 6 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 7: Departure</h3>
+                            <ul>
+                                <li><strong>Morning:</strong> Return to Nairobi for a farewell shopping spree at high-end Kenyan artisan boutiques (e.g., Kazuri Beads or Matbronze)</li>
+                                <li><strong>Afternoon:</strong> Guests enjoy a farewell lunch at the iconic Carnivore Restaurant or Tamarind Nairobi.
+                                </li>
+                                <li><strong>Evening:</strong> Private airport transfer with VIP lounge access before departure.
+                                </li>
+                                
+                            </ul>
+                            <p class="day-highlights"><i class="fas fa-star"></i> <strong>Highlight:</strong>Guests leave with a premium photo book documenting their trip and curated keepsakes.</p>
+                        </div>
+                        
+                        <!-- Day 7 -->
+                        
+                    </div>
+                </div>
+                
+                <!-- Pros and Cons -->
+                <div class="pros-cons fade-in delay-4">
+                    <div class="pros">
+                        <h3><i class="fas fa-thumbs-up" style="color: var(--success);"></i> Why Choose the Luxury Package?
+                        </h3>
+                        <ul>
+                            <li>Private chartered flights and luxury vehicles.
+                            </li>
+                            <li>5-star accommodations with all-inclusive gourmet meals.
+
+                            </li>
+                            <li>Personalized safaris with professional guides and photographers.
+
+                            </li>
+                            <li>Cultural activities and premium value additions (hot air balloon safari, private dinners, spa treatments).
+
+
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
+                   
+                </div>
+                
+                <!-- No disclaimer section for this package -->
+                
+                <!-- Book Button -->
+                <a href="#" class="book-button">
+                    Buy Now - £2,500
+
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="package-card fade-in">
+            <div class="package-image" style="background-image: url('images/accomodation5.jpg');">
+                <!-- No badge for this package -->
+            </div>
+            
+            <div class="package-content">
+                <h2 class="package-title fade-in delay-1">ALL INCLUSIVE FAMILY OF (4) PACKAGE</h2>
+                <p class="package-description fade-in delay-2">Discover Kenya’s breathtaking landscapes, iconic wildlife, and vibrant culture with our expertly curated family itinerary. From thrilling safaris to relaxing coastal escapes, this all-inclusive adventure is designed to leave every family member with unforgettable memories—all at an unbeatable price.</p>
+                
+                <!-- Itinerary Section (content would be similar structure to saver package) -->
+                <div class="itinerary-section fade-in delay-3">
+                    <button class="itinerary-toggle" onclick="toggleItinerary(this)">
+                        <i class="fas fa-calendar-alt"></i> View 7-Day Itinerary
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="itinerary-content">
+                        <!-- Day 1 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 1: Arrival and Welcome to Kenya</h3>
+                            <ul>
+                                <li><strong>Experience Begins:</strong>   Upon arrival at the airport, a dedicated guide will welcome you with warm Kenyan hospitality.</li>
+                                <li><strong>Personal Touch:</strong>  A private transfer will take your family to a cozy BnB where a beautifully arranged food bouquet awaits to make you feel right at home.</li>
+                                <li><strong>Relax and Unwind:</strong> Take the evening to rest, recharge, and prepare for the adventure ahead.
+
+                                </li>
+                                
+                            </ul>
+                           
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 2:  Wildlife Wonders & Family Fun</h3>
+                            <ul>
+                                <li><strong>Morning Magic:</strong> Kickstart your day at the Giraffe Centre, where you’ll hand-feed and interact with the majestic creatures in a serene environment.</li>
+                                <li><strong>Lunch with a View:</strong> Enjoy a delightful meal near the Nairobi National Park, surrounded by the sounds of nature.</li>
+                                <li><strong>Educational Adventure:</strong> Head to the Sheldrick Wildlife Trust to meet baby elephants, learn about their rescue stories, and witness conservation in action.</li>
+                                <li><strong>Fun For ALL:</strong>  End the day at Two Rivers Mall, where the kids can enjoy carnival rides and activities. Meanwhile, parents can sneak away to a luxurious spa retreat, knowing the little ones are in good hands with a vetted nanny.
+
+                                </li>
+                                
+                            </ul>
+                            
+                        </div>
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 3:   Thrills at Hells Gate and Naivasha Serenity</h3>
+                            <ul>
+                                <li><strong>Bike Through Nature:</strong> Cycle through the breathtaking landscapes of Hells Gate National Park, with stunning rock formations, wildlife sightings, and a guide van ready to assist if needed.</li>
+                                <li><strong>Rejuvenate in Warm Water:</strong>After the thrill of biking, soak in the natural Olkaria Geothermal Spa, a one-of-a-kind experience.</li>
+                                <li><strong>Sundowner On the Lake:</strong>  Cap off the day with a relaxing boat ride on Lake Naivasha, where you’ll spot playful hippos and enjoy the magical Kenyan sunset.</li>
+                                
+                            </ul>
+                            
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 4:  Immerse in Kenyan Culture</h3>
+                            <ul>
+                                <li><strong>Authentic Connnections:</strong> Spend the day with local artisans and chefs, learning how to prepare Kenya’s most loved cuisines. Try your hand at crafting souvenirs with the guidance of talented locals.</li>
+                                <li><strong>Evening Bonfire:</strong>  Gather around a traditional bonfire and enjoy an unforgettable Nyama Choma feast while swapping stories and soaking in Kenyan culture under the stars.
+                                </li>
+                                
+                                
+                            </ul>
+                            
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 5:  The Ultimate Maasai Mara Safari</h3>
+                            <ul>
+                                <li><strong>Journey to the Wild:</strong> Take a scenic drive or train ride to the world-famous Maasai Mara, home to the Big Five and stunning savannah landscapes.</li>
+                                <li><strong>Afternoon Game Drive:</strong> Experience the thrill of spotting lions, elephants, and cheetahs on an expert-guided safari tour.</li>
+                                <li><strong>Under the Stars:</strong> Spend the night in a luxury tented camp, surrounded by the sounds of the African wilderness.</li>
+                            </ul>
+                           
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 6: Morning Safari & Coastal Charm</h3>
+                            <ul>
+                                <li><strong>Sunrise Safaris:</strong> Start the day with a magical morning game drive as the savannah comes to life.</li>
+                                <li><strong>Coastal Bound:</strong> Enjoy breakfast before heading to Mombasa via flight or train.</li>
+                                <li><strong>Dine by the Ocean:</strong> End the day with a relaxing dinner overlooking the Indian Ocean, indulging in fresh seafood and coastal delicacies.</li>
+                            </ul>
+                           
+                        </div>
+                        
+                        <!-- Day 6 -->
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 7: Coastal Adventure</h3>
+                            <ul>
+                                <li><strong>Marrine Exploration:</strong> Visit the beautiful Malindi or take an exciting trip to the Dolphin Marine Park to witness playful dolphins in their natural habitat.</li>
+                                <li><strong>Coastal Cuisine:</strong> Savor exotic coastal dishes, blending African, Arabic, and Indian influences.</li>
+                                
+                            </ul>
+
+                        </div>
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 8: Rest and Return to Nairobi</h3>
+                            <ul>
+                                <li><strong>Relax and Reflect:</strong> Spend the morning unwinding on the beach or exploring Mombasa’s vibrant streets.
+                                </li>
+                                <li><strong>Journey Back:</strong> Travel back to Nairobi via road, train, or flight.
+                                </li>
+                                <li><strong>Farewell Dinner:</strong> Wrap up your trip with a farewell dinner at a charming Nairobi restaurant.
+                                </li>
+                                
+                            </ul>
+
+                        </div>
+                        <div class="day-card">
+                            <h3 class="day-title"><i class="fas fa-sun"></i> Day 9: Farewell Kenya!</h3>
+                            <ul>
+                                <li><strong>Goodbye, but not Forever:</strong> Transfer to the airport for your departure flight, taking home memories of Kenya’s incredible landscapes, wildlife, and warm hospitality. </li>
+                                
+                                
+                            </ul>
+
+                        </div>
+                        
+                        <!-- Day 7 -->
+                        
+                    </div>
+                </div>
+                
+                <!-- Pros and Cons -->
+                <div class="pros-cons fade-in delay-4">
+                    <div class="pros">
+                        <h3 style="color: #e67e22;"><i class="fas fa-heart" style="color: red;"></i> Here’s why you’ll love traveling with us:  
+                        </h3>
+                        <ul>
+                            <li><strong> Kid-Approved Itineraries:</strong> From feeding giraffes to spotting lions, our activities keep the little ones engaged and talking about it for weeks (no “I’m bored!” here).  </li>
+                            <li><strong>Parent-Friendly Plans: </strong> We sneak in those spa breaks and peaceful dinners because, hey, you deserve it too.  
+                            </li>
+
+                            <li><strong>All-Inclusive, No Surprises: </strong> One price for the whole family, covering activities, accommodation, and more. No hidden fees or “oops, we forgot to budget for that” moments.  
+
+                            </li>
+                            <li><strong>Flexible and Fun:</strong> Traveling with kids is unpredictable, so we build itineraries that are flexible and adaptable to keep the whole family smiling.  
+
+                            </li>
+                            <p>
+
+
+
+
+                            </p>
+                            
+                        </ul>
+                    </div>
+                    
+                   
+                </div>
+                
+                <!-- No disclaimer section for this package -->
+                
+                <!-- Book Button -->
+                <a href="#" class="book-button">
+                    Buy Now - £3,300
+
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Add your remaining 3 packages using similar structure -->
+        
+    </section>
+
+    <!-- Your footer goes here -->
+
+    <script>
+        // Function to toggle itinerary visibility
+        function toggleItinerary(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('active');
+            
+            const icon = button.querySelector('.fa-chevron-down');
+            if (content.classList.contains('active')) {
+                button.innerHTML = '<i class="fas fa-calendar-alt"></i> Hide 7-Day Itinerary <i class="fas fa-chevron-up"></i>';
+            } else {
+                button.innerHTML = '<i class="fas fa-calendar-alt"></i> View 7-Day Itinerary <i class="fas fa-chevron-down"></i>';
+            }
+        }
+        
+        // Function to toggle disclaimer visibility
+        function toggleDisclaimer(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                button.innerHTML = 'Hide Full Disclaimer <i class="fas fa-chevron-up"></i>';
+            } else {
+                button.innerHTML = 'Read Full Disclaimer <i class="fas fa-chevron-down"></i>';
+            }
+        }
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkScroll() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+        });
+    </script>
+</body>
+</html>

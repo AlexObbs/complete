@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Package</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-bg: rgba(255, 255, 255, 0.9);
+            --card-bg: rgba(51, 51, 51, 0.8);
+            --accent-red: #ff4444;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --road-color: rgba(68, 68, 68, 0.9);
+        }
+
+        body {
+            background-image: url('coast.jpg') !important;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+        .safari-header {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-red);
+            position: relative;
+            z-index: 2;
+            margin-bottom: 0; /* Remove margin bottom */
+        }
+        .safari-header h1 {
+            color: var(--accent-red);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .safari-header p {
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .buy-package {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background: var(--accent-red);
+                color: var(--text-light);
+                padding: 15px 30px;
+                border: none;
+                border-radius: 50px;
+                font-size: 1.1rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+                z-index: 1000;
+                animation: bounce 2s infinite;
+            }
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-10px);
+                }
+                60% {
+                    transform: translateY(-5px);
+                }
+            }
+            @keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+        .buy-package::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+            background: var(--accent-red);
+            z-index: -1;
+            animation: pulse 2s infinite;
+            left: 0;
+            top: 0;
+        }
+        @keyframes gradientShift {
+        0% {
+            stop-color: #ff4444;
+        }
+        50% {
+            stop-color: #ff6b6b;
+        }
+        100% {
+            stop-color: #ff4444;
+        }
+    }
+
+    .gradient-stop-1 {
+        animation: gradientShift 2s infinite alternate;
+    }
+
+    .gradient-stop-2 {
+        animation: gradientShift 2s infinite alternate-reverse;
+    }
+
+
+        
+        .buy-package:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+        }
+
+
+
+
+
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 100px; /* Add padding to create space after header */
+        }
+        .road-section {
+            position: relative;
+            width: 100%;
+            padding: 40px 20px;
+        }
+        .scroll-arrow {
+        position: fixed;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        z-index: 100;
+        transform-origin: center;
+        transition: transform 0.3s ease;
+        filter: drop-shadow(0 2px 8px rgba(255, 68, 68, 0.3));
+    }
+
+    .scroll-arrow svg {
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+        /* Curved Road Design */
+        .road-path {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            transform: translateX(-50%);
+            background: var(--road-color);
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .road-marking {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, 
+                var(--text-light) 0%, 
+                var(--text-light) 50%, 
+                transparent 50%, 
+                transparent 100%);
+            background-size: 20px 40px;
+            animation: moveRoad 1s linear infinite;
+            transform: translateX(-50%);
+        }
+
+        @keyframes moveRoad {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 40px; }
+        }
+
+        
+        .car {
+            position: fixed;
+            left: 50%;
+            width: 120px; /* Increased size for better detail */
+            height: 60px;
+            z-index: 100;
+            transform-origin: center;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.5));
+        }
+
+        .car svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .timeline-box {
+            padding: 35px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: calc(50% - 50px);
+            margin: 100px 0;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            clear: both; /* Add this to ensure proper spacing */
+        }
+
+
+        .timeline-box:first-child {
+            margin-top: 10px;
+        }
+
+        .timeline-box:last-child {
+            margin-bottom: 100px;
+        }
+
+        .timeline-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline-content {
+            position: relative;
+        }
+
+        .day-title {
+            font-size: 1.5rem;
+            color: var(--accent-red);
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-icon {
+            font-size: 1.8rem;
+            color: var(--accent-red);
+        }
+
+        .day-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .milestone {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-100%);
+            border: 4px solid var(--primary-bg);
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+        }
+
+        .milestone::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 4px;
+            background: var(--accent-red);
+            top: 50%;
+            transform: translateY(-100%);
+        }
+
+        .right {
+            float: right;
+            margin-bottom: 150px;
+        }
+
+        .right .milestone {
+            left: -62px;
+        }
+
+        .right .milestone::after {
+            left: 20px;
+            right:auto;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .left .milestone {
+            right: -62px;
+        }
+
+        .left .milestone::after {
+            right: 20px;
+            left:auto;
+        }
+
+        .day-badge {
+            position: absolute;
+            top: -12px;
+            background: var(--accent-red);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+        }
+
+        .left .day-badge {
+            right: 20px;
+        }
+
+        .right .day-badge {
+            left: 20px;
+        }
+        .nav-container {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-bottom: 2px solid var(--accent-red);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+       
+
+        @media screen and (max-width: 768px) {
+            .safari-header h1 {
+                font-size: 2rem;
+            }
+            .buy-package {
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 20px;
+                right: auto;
+                width: 90%;
+                justify-content: center;
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+            .road-path {
+                left: 30px;
+                width: 40px;
+            }
+            .scroll-arrow {
+            left: 30px;
+            width: 40px;
+            height: 40px;
+        }
+
+            .car {
+                left: 30px;
+                width: 60px;
+                height: 30px;
+            }
+            @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+            transform: translateX(-50%) translateY(-5px);
+        }
+    }
+
+            .timeline-box {
+                width: calc(100% - 80px);
+                float: right;
+                margin: 100px 0 100px 60px;
+            }
+            .timeline-container {
+                padding-top: 60px;
+            }
+            .road-section {
+                padding: 20px;
+            }
+            
+            .car {
+                left: 30px;
+                width: 80px;
+                height: 40px;
+            }
+
+
+            .timeline-box.left .milestone,
+            .timeline-box.right .milestone {
+                left: -80px;
+                right: auto;
+            }
+
+            .timeline-box.left .milestone::after,
+            .timeline-box.right .milestone::after {
+                left: 20px;
+                right: auto;
+            }
+
+            .timeline-box.left,
+            .timeline-box.right {
+                float: right;
+            }
+
+            .timeline-box.left .day-badge,
+            .timeline-box.right .day-badge {
+                left: 20px;
+                right: auto;
+            }
+        }
+
+        .timeline-container::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-red);
+            border-radius: 5px;
+        }
+        .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+                border-bottom: 2px solid var(--accent-red);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            /* Hamburger Animation */
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(9px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -5px);
+            }
+
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">
+                <!-- Replace with your logo -->
+                <img src="/api/placeholder/150/50" alt="Company Logo">
+                
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="premium.html">Premium Package</a>
+                <a href="family.html">Family Package</a>
+                <a href="luxury.html">Luxury Package</a>
+                <a href="standard.html">Standard Package</a>
+                <a href="saver.html">Saver Package</a>
+            </div>
+        </div>
+    </nav>
+    
+        <header class="safari-header">
+            <h1>7-Day Luxury Package Itinerary</h1>
+            <p>Embark on a luxurious 7-day journey through Kenya, exploring iconic landscapes, vibrant wildlife, and rich cultural heritage. Perfect for families, couples, and adventurers seeking an exclusive safari experience, this premium package blends opulent accommodations, curated activities, and unforgettable encounters with Kenya’s beauty. Highlights include the Maasai Mara, Lake Nakuru, and personalized cultural interactions.</p>
+        </header>
+        
+        <button class="buy-package">
+            Book Luxury Package - £1,800
+            <i class="fas fa-arrow-right"></i>
+        </button>
+        <div class="timeline-container">
+            <div class="road-section"></div>
+                <div class="road-path">
+                    <div class="road-marking"></div>
+                </div>
+                <div class="car">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Gradient definition -->
+                        <defs>
+                            <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" class="gradient-stop-1" style="stop-color:#ff4444;stop-opacity:1" />
+                                <stop offset="100%" class="gradient-stop-2" style="stop-color:#ff6b6b;stop-opacity:1" />
+                            </linearGradient>
+                            
+                            <!-- Glow filter -->
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Modern arrow shape -->
+                        <path d="M50,10 
+                                 L80,40 
+                                 H65 
+                                 V90 
+                                 H35 
+                                 V40 
+                                 H20 
+                                 Z" 
+                              fill="url(#arrowGradient)"
+                              filter="url(#glow)"/>
+                        
+                        <!-- Inner details -->
+                        <path d="M50,20 
+                                 L70,40 
+                                 H60 
+                                 V80 
+                                 H40 
+                                 V40 
+                                 H30 
+                                 Z" 
+                              fill="#ffffff"
+                              opacity="0.2"/>
+                    </svg>
+                </div>
+                
+                
+
+                <div class="timeline-box right">
+                    <div class="day-badge">Day 1</div>
+                    <div class="milestone"></div>
+                    <div class="timeline-content">
+                        <h3 class="day-title">
+                            <i class="fas fa-home day-icon"></i>
+                            Arrival in Nairobi.
+                        </h3>
+                        <p class="day-description">Welcome Experience: Upon arrival, enjoy a personalized meet-and-greet service. Guests receive a welcome kit with Kenyan snacks, a local SIM card, and a small souvenir. <br>
+                            Activity: Depending on arrival time, visit the Karen Blixen Museum or the Giraffe Centre.<br>
+                            Accommodation: Luxury boutique hotel in Nairobi with a fine dining dinner.
+                            </p>
+                    </div>
+                </div>
+
+                <div class="timeline-box left" >
+                    <div class="day-badge">Day 2</div>
+                    <div class="milestone"></div>
+                    <div class="timeline-content">
+                        <h3 class="day-title">
+                            <i class="fas fa-paw day-icon"></i>
+                            Nairobi to Maasai Mara
+                        </h3>
+                        <p class="day-description">Morning: Depart for the Maasai Mara in a private 4x4 vehicle, stopping for scenic views of the Great Rift Valley. <br>
+                            Afternoon: Arrive at your luxury tented camp in time for lunch.
+                            Evening: Embark on a guided sunset game drive, spotting the Big Five in Kenya’s premier wildlife reserve. <br>
+                            Value Addition: Extended safari hours at no extra charge.
+                            <br>
+                            Accommodation: Luxurious Maasai Mara camp with private terraces overlooking the savannah.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-box right">
+                    <div class="day-badge">Day 3</div>
+                    <div class="milestone"></div>
+                    <div class="timeline-content">
+                        <h3 class="day-title">
+                            <i class="fas fa-users day-icon"></i>
+                            Full-Day Maasai Mara Safari
+                        </h3>
+                        <p class="day-description">Morning & Afternoon: Full-day game drives to witness wildlife, including cheetahs, lions, and elephants. Visit the Mara River for a chance to see crocodiles and hippos. <br>
+                            Value Addition: Enjoy a cultural tour of a Maasai village with traditional dances and the opportunity to participate in beadwork crafting. <br>
+                            Optional: Upgrade to a hot air balloon safari for breathtaking aerial views of the Mara. <br>
+                            Accommodation: Luxurious Maasai Mara camp.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-box left">
+                    <div class="day-badge">Day 4</div>
+                    <div class="milestone"></div>
+                    <div class="timeline-content">
+                        <h3 class="day-title">
+                            <i class="fas fa-hiking day-icon"></i>
+                            Maasai Mara to Lake Nakuru
+                        </h3>
+                        <p class="day-description">Morning: Drive to Lake Nakuru National Park, renowned for its flamingos and rhinos. <br>
+                            Afternoon: Check into your luxury lodge and enjoy a gourmet lunch before heading out for a game drive. Spot endangered species such as the Rothschild giraffe and white rhinos. <br>
+                            Evening: Relax with a complimentary spa treatment. <br>
+                            Accommodation: Eco-lodge near Lake Nakuru with stunning lake views.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-box right">
+                    <div class="day-badge">Day 5</div>
+                    <div class="milestone"></div>
+                    <div class="timeline-content">
+                        <h3 class="day-title">
+                            <i class="fas fa-camera day-icon"></i>
+                            Lake Nakuru to Amboseli National Park
+                        </h3>
+                        <p class="day-description">Morning: Travel to Amboseli National Park, famed for its elephant herds and iconic views of Mount Kilimanjaro. <br>
+                            Afternoon: After checking in, enjoy a leisurely afternoon game drive. <br>
+                            Value Addition: Exclusive photo session with a professional photographer. <br>
+                            Accommodation: High-end lodge with panoramic views of Kilimanjaro.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-box left">
+                    <div class="day-badge">Day 6</div>
+                    <div class="milestone"></div>
+                    <div class="timeline-content">
+                        <h3 class="day-title">
+                            <i class="fas fa-water day-icon"></i>
+                            Full-Day Amboseli Safari
+                        </h3>
+                        <p class="day-description">Morning & Afternoon: Explore Amboseli’s unique ecosystems, capturing elephants, flamingos, and zebras set against the backdrop of Africa’s tallest mountain. <br>
+                            Optional: Add a guided bushwalk or night safari for a rare wildlife experience. <br>
+                            Evening: Savor a cultural dinner with live traditional music. <br>
+                            Accommodation: Luxurious lodge in Amboseli.
+                             </p>
+                    </div>
+                </div>
+
+                <div class="timeline-box right">
+                    <div class="day-badge">Day 7</div>
+                    <div class="milestone"></div>
+                    <div class="timeline-content">
+                        <h3 class="day-title">
+                            <i class="fas fa-flag-checkered day-icon"></i>
+                            Departure
+                        </h3>
+                        <p class="day-description">Morning: Return to Nairobi for a farewell lunch at a top-rated restaurant. <br>
+                            Optional: Visit the David Sheldrick Elephant Orphanage before airport transfer. <br>
+                            Farewell: Guests are gifted a curated photo album with highlights of their journey.
+                            
+                             </p>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const car = document.querySelector('.car');
+                let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                let lastScrollPosition = 0;
+                
+                function updateCarPosition() {
+                    const scrollPosition = window.pageYOffset;
+                    const scrollPercentage = (scrollPosition / maxScroll) * 100;
+                    const scrollingDown = scrollPosition > lastScrollPosition;
+                    
+                    car.style.transform = `translate(-50%, ${scrollPercentage}%) rotate(${scrollingDown ? 0 : 180}deg)`;
+                    lastScrollPosition = scrollPosition;
+                }
+    
+                window.addEventListener('resize', function() {
+                    maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                });
+    
+                let ticking = false;
+                window.addEventListener('scroll', function() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            updateCarPosition();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+    
+                updateCarPosition();
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+                const arrow = document.querySelector('.scroll-arrow');
+                let maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                let lastScrollPosition = 0;
+                
+                function updateArrowPosition() {
+                    const scrollPosition = window.pageYOffset;
+                    const scrollPercentage = (scrollPosition / maxScroll) * 100;
+                    const scrollingDown = scrollPosition > lastScrollPosition;
+                    
+                    // Update arrow position and rotation
+                    arrow.style.transform = `translate(-50%, ${scrollPercentage}%) rotate(${scrollingDown ? 180 : 0}deg)`;
+                    lastScrollPosition = scrollPosition;
+                }
+    
+                window.addEventListener('resize', function() {
+                    maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                });
+    
+                let ticking = false;
+                window.addEventListener('scroll', function() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            updateArrowPosition();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+    
+                updateArrowPosition();
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+        </script>
+</body>
+</html>

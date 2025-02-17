@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+
+        form {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto; /* Center the form on larger screens */
+        }
+
+        label {
+            font-weight: bold;
+            display: block; /* Ensure labels are above input fields */
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px 15px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Reduce padding for smaller screens */
+            }
+
+            form {
+                width: 100%;
+                max-width: 100%; /* Use full width on small screens */
+                box-shadow: none; /* Remove shadow for a cleaner look */
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="https://formspree.io/f/mldgbwzd" method="POST">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="fullName">Full Legal Name:</label>
+            <input type="text" id="fullName" name="Full Legal Name" placeholder="Enter your full name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="Address" placeholder="Enter your full address" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="Date of Birth" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="Phone Number" placeholder="e.g., +44 123 456 7890" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Volunteer Preferences</legend>
+            <label for="education">Level of Education:</label>
+            <input type="text" id="education" name="Education" placeholder="e.g., Bachelor's Degree" required>
+
+            <label for="activity">Preferred Volunteer Activity:</label>
+            <select id="activity" name="Preferred Activity" required>
+                <option value="orphanage">Orphanage</option>
+                <option value="school">School</option>
+                <option value="hospital">Hospital</option>
+                <option value="clinic">Clinic</option>
+                <option value="wildlife">Wildlife Conservation</option>
+                <option value="government">Government Office</option>
+            </select>
+
+            <label for="dates">Preferred Dates:</label>
+            <input type="date" id="dates" name="Preferred Dates" required>
+
+            <label for="gender">Gender (Assigned at Birth):</label>
+            <select id="gender" name="Gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="location">Preferred Location:</label>
+            <select id="location" name="Preferred Location" required>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Nakuru">Nakuru</option>
+                <option value="Mombasa">Mombasa</option>
+            </select>
+
+            <label for="currency">Select Currency:</label>
+            <select id="currency" name="Currency" required>
+                <option value="GBP">GBP (£)</option>
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Emergency Contact Information</legend>
+            <label for="emergencyName">Emergency Contact Name:</label>
+            <input type="text" id="emergencyName" name="Emergency Contact Name" placeholder="Full Name" required>
+
+            <label for="emergencyRelation">Relationship:</label>
+            <input type="text" id="emergencyRelation" name="Emergency Relationship" placeholder="e.g., Parent, Sibling, Friend" required>
+
+            <label for="emergencyPhone">Emergency Contact Phone:</label>
+            <input type="tel" id="emergencyPhone" name="Emergency Contact Phone" placeholder="e.g., +44 123 456 7890" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Terms and Conditions</legend>
+            <p>Please ensure you have read and understood the <a href="terms-and-conditions.html" target="_blank">terms and conditions</a> before submitting.</p>
+            <label>
+                <input type="checkbox" id="agreement" name="Agreement" required>
+                I confirm that I have read, understood, and agree to the terms and conditions of volunteering with Kenya On A Budget Safaris.
+            </label>
+        </fieldset>
+
+        <input type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>
